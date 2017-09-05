@@ -21,19 +21,22 @@ io.on('connection', (socket) => {
 
 	socket.broadcast.emit('newMessage', generateMessage('Admin', 'A new challenger has arrived'));
 
-	socket.on('createMessage', (message) => {
-		// io.emit('newMessage', {
+	socket.on('createMessage', (message, callback) => {
+
+		io.emit('newMessage', {
+			from: message.from,
+			text: message.text,
+			createdAt: new Date().getTime()
+		});
+
+		// socket.broadcast (indicates every user BUT the socket calling broadcast)
+		// socket.broadcast.emit('newMessage', {
 		// 	from: message.from,
 		// 	text: message.text,
 		// 	createdAt: new Date().getTime()
 		// });
 
-		// socket.broadcast (indicates every user BUT the socket calling broadcast)
-		socket.broadcast.emit('newMessage', {
-			from: message.from,
-			text: message.text,
-			createdAt: new Date().getTime()
-		});
+		callback('This is from server');
 	});
 
 	socket.on('disconnect', () => {
