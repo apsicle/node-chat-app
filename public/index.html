@@ -1,27 +1,39 @@
 <!DOCTYPE html>
 <html>
-	<meta charset="UTF-8">
+	
 	<title></title>
 
 	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="/css/style.css"
 	</head>
 
-	<body>
-		<p>Welcome to the chat app!</p>
+	<body class="chat">
 
-		<ol id="messages"></ol>
+		<div class="chat__sidebar">
+			<h3>People</h3>
+			<div id="users"></div>
+		</div>
 
-		<form id="message-form">
-			<input name="message" type="text" placeholder="Type your message here"/>
+		<div class="chat__main">
+			<ol id="messages" class="chat__messages"></ol>
 
-			<button>Send</button>
-		</form>
+			<div class="chat__footer">
+				<form id="message-form">
+					<input name="message" type="lucktext" placeholder="Type your message here" autofocus autocomplete="off"/>
 
-		<button id="send-location">Send Location</button>
+					<button>Send</button>
+				</form>
 
+				<button id="send-location">Send Location</button>
+			</div>
+		</div>
+		
 		<script src="/js/libs/jquery-3.2.1.min.js"></script>	
 		<script src="/socket.io/socket.io.js"></script>
 		<script src="/js/index.js"></script>
 
 	</body>
 </html>
+
+http://links.mead.io/chat-css
